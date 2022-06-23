@@ -18,8 +18,8 @@ export class ProductComponent implements OnInit {
     //let id= +this.route.snapshot.paramMap.get('id');
     //this.selectedProduct = products.find(i => i.id === id);
     this.route.paramMap
-      .subscribe((params: { get: (arg0: string) => any; }) =>{
-        let id = params.get('id');
+      .subscribe((params: { get: (arg0: string) => string | number; }) =>{
+        let id = +params.get('id');
         this.selectedProduct = products.find(i => i.id === id);
 
       })

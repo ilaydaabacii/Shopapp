@@ -18,10 +18,26 @@ export class ProductsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    // route params
+    this.route.paramMap.subscribe(params=>{
+      let id= params.get('id')
+    });
+    let id = this.route.snapshot.paramMap.get('id');
+
+    //query params
+    //asenkron
+    this.route.queryParamMap.subscribe(params=>{
+      console.log(params);
+    });
+    //senkron
+    let page = this.route.snapshot.queryParamMap.get('page');
   }
 
   loadProducts(){
-    this.router.navigate(['products'], {relativeTo: this.route});
+    this.router.navigate(['/products'], {
+      queryParams:{
+        page: 1
+    }} );
   }
 
 }
